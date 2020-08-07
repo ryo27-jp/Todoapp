@@ -14,4 +14,6 @@ table.table.tablejover
             tr
                 td= link_to todo.name, todo
                 td= todo.created_at
-                td= link_to '編集', edit_todo_path(todo), class:'btn btn-primary mr-3'
+                td
+                  = link_to '編集', edit_todo_path(todo), class:'btn btn-primary mr-3'
+                  = link_to '削除', todo, method: :delete, date: { confirm: "ToDo「#{todo.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
