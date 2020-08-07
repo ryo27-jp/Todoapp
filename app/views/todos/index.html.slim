@@ -1,2 +1,15 @@
-h1 Todos#index
-p Find me in app/views/todos/index.html.slim
+h1 Todo 一覧
+
+= link_to '新規登録', new_todo_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.tablejover
+    thead.thead-default
+        tr
+            th= Todo.human_attribute_name(:name)
+            th= Todo.human_attribute_name(:created_at)
+    tbody
+        - @todos.each do |todo|
+            tr
+                td= todo.name
+                td= todo.created_at

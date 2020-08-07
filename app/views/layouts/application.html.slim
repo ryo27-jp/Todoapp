@@ -13,4 +13,6 @@ html
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
       .navbar-brand Todoapp
     .container
-    = yield
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
+      = yield
