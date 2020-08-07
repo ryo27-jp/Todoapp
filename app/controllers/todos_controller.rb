@@ -4,6 +4,7 @@ class TodosController < ApplicationController
   end
 
   def show
+    @todo = Todo.find(params[:id])
   end
 
   def new
@@ -17,6 +18,13 @@ class TodosController < ApplicationController
   end
 
   def edit
+    @todo = Todo.find(params[:id])
+  end
+
+  def update
+    todo = Todo.find(params[:id])
+    todo.update!(todo_params)
+    redirect_to todos_url, notice: "Todo「#{todo.name}」を編集しました。"
   end
 
   private
