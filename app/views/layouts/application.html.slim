@@ -11,7 +11,7 @@ html
 
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand ToDoapp
+      .navbar-brand  = link_to 'TodoApp', todos_path
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice

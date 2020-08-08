@@ -1,6 +1,8 @@
 h1 Todo 一覧
 
 = link_to '新規登録', new_todo_path, class: 'btn btn-primary'
+= link_to 'カテゴリ追加', new_category_path, class: 'btn btn-primary'
+= link_to 'カテゴリ一覧', categories_path, class: 'btn btn-primary'
 
 .mb-3
 table.table.tablejover
@@ -8,12 +10,15 @@ table.table.tablejover
         tr
             th= Todo.human_attribute_name(:name)
             th= Todo.human_attribute_name(:created_at)
+            th= Todo.human_attribute_name(:category_id)
             th
     tbody
         - @todos.each do |todo|
             tr
                 td= link_to todo.name, todo
                 td= todo.created_at
+                / 理解が曖昧
+                td= todo.category.try(:name)
                 td
                   = link_to '編集', edit_todo_path(todo), class:'btn btn-primary mr-3'
                   = link_to '削除', todo, method: :delete, date: { confirm: "ToDo「#{todo.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

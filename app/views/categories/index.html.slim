@@ -1,2 +1,16 @@
-h1 Categories#index
-p Find me in app/views/categories/index.html.slim
+h1 カテゴリ一覧 
+= link_to '新規登録', new_todo_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.tablejover
+    thead.thead-default
+        tr
+            th= Category.human_attribute_name(:name)
+            th
+    tbody
+        - @categories.each do |category|
+            tr
+                td= link_to category.name, category
+                td
+                  = link_to '編集', edit_category_path(category), class:'btn btn-primary mr-3'
+                  = link_to '削除', category, method: :delete, date: { confirm: "カテゴリ「#{category.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
