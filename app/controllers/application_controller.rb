@@ -10,4 +10,5 @@ class ApplicationController < ActionController::Base
 
     def login_required
       redirect_to login_url unless current_user
+    end
 end
