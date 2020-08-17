@@ -1,2 +1,15 @@
-h1 Viewers#index
-p Find me in app/views/viewers/index.html.slim
+h1 ユーザー一覧
+
+.mb-3
+table.table.tablejover
+    thead.thead-default
+        tr
+            th= User.human_attribute_name(:name)
+            th
+    tbody
+        - @viewers.each do |viewer|
+            tr
+                td= link_to viewer.name, viewer
+                td
+                  = link_to '編集', edit_viewer_path(viewer), class:'btn btn-primary mr-3'
+                  = link_to '削除', viewer, method: :delete, date: { confirm: "ユーザー「#{viewer.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

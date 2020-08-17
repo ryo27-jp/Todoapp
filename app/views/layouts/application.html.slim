@@ -14,13 +14,18 @@ html
       .navbar-brand  = link_to 'TodoApp', todos_path
 
       ul.navbar-nav.ml-auto
-        - if current_user
+        - if editor_user
           li.nav-item= link_to 'Todo一覧', todos_path, class: 'nav-link'
-          / - if current_user.admin?
-          /   li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
+          li.nav-item= link_to 'カテゴリ一覧', categories_path, class: 'nav-link'
+          li.nav-item= link_to '管理者権限', users_path, class: 'nav-link'
+          li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - elsif viewer_user
+          li.nav-item= link_to 'Todo一覧', todos_path, class: 'nav-link'
+          li.nav-item= link_to 'カテゴリ一覧', categories_path, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+          li.nav-item= link_to '新規登録', new_user_path, class:'nav-link'
 
     .container
       - if flash.notice.present?

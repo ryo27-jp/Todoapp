@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :todos
   resources :categories
   resources :users
-  resources :viewers
+  resources :viewers, only: [:new, :create]
 end

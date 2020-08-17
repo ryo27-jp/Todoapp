@@ -1,10 +1,16 @@
 class TodosController < ApplicationController
+  skip_before_action :editor_required, only: [:index, :show]
+  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+
   def index
-    @todos = current_user.todos
+    if viewer_user
+      @todos = viewer_user.editor.todos
+    else
+      @todos = current_user.todos
+    end
   end
 
   def show
-    @todo = current_user.todos.find(params[:id])
   end
 
   def new
@@ -22,24 +28,25 @@ class TodosController < ApplicationController
   end
 
   def edit
-    @todo = current_user.todos.find(params[:id])
   end
 
   def update
-    todo = current_user.todos.find(params[:id])
-    todo.update!(todo_params)
-    redirect_to todos_url, notice: "Todo「#{todo.name}」を編集しました。"
+    @todo.update!(todo_params)
+    redirect_to todos_url, notice: "Todo「#{@todo.name}」を編集しました。"
   end
 
   def destroy
-    todo = current_user.todos.find(params[:id])
-    todo.destroy
-    redirect_to todos_url, notice: "Todo「#{todo.name}」を削除しました。"
+    @todo.destroy
+    redirect_to todos_url, notice: "Todo「#{@todo.name}」を削除しました。"
   end
 
   private
     
     def todo_params
       params.require(:todo).permit(:name, :description, :category_id)
+    end
+    
+    def set_todo
+      @todo = current_user.todos.find(params[:id])
     end
 end

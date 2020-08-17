@@ -1,8 +1,6 @@
 class ViewersController < ApplicationController
+  skip_before_action :editor_required
 
-  def index
-    @viewers = editor_user.viewers
-  end
 
   def new
     @viewer = User.new
@@ -16,12 +14,6 @@ class ViewersController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def show
   end
 
   private

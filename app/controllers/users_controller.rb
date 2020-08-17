@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  skip_before_action :login_required, only: [:new, :create]
+  skip_before_action :editor_required, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = editor_user.viewers
   end
 
   def new
@@ -19,15 +22,28 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def show
-    @user = User.find(params[:id])
   end
+
+  def update
+    @user.update!(user_params)
+    redirect_to todos_url, notice: "Todo「#{@user.name}」を編集しました。"
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to todos_url, notice: "Todo「#{@user.name}」を削除しました。"
+  end
+
 
   private
     def user_params
       params.require(:user).permit(:name,:email, :password, :password_confirmation)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 end
