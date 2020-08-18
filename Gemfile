@@ -67,3 +67,4 @@ gem 'html2slim'
 
 gem 'bootstrap'
 gem 'pry-rails'
+gem 'ransack'

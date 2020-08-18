@@ -12,4 +12,4 @@ table.table.table-hover
       td= @category.name
 
 = link_to '編集', edit_category_path(@category), class:'btn btn-primary mr-3'
-= link_to '削除', @category, method: :delete, date: { confirm: "カテゴリ「#{@category.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to '削除', @category, method: :delete, data: { confirm: "カテゴリ「#{@category.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

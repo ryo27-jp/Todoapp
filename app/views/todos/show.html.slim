@@ -22,4 +22,4 @@ table.table.table-hover
       td= @todo.updated_at
 
 = link_to '編集', edit_todo_path(@todo), class:'btn btn-primary mr-3'
-= link_to '削除', @todo, method: :delete, date: { confirm: "ToDo「#{@todo.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to '削除', @todo, method: :delete, data: { confirm: "Todo「#{@todo.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

@@ -29,12 +29,12 @@ class UsersController < ApplicationController
 
   def update
     @user.update!(user_params)
-    redirect_to todos_url, notice: "Todo「#{@user.name}」を編集しました。"
+    redirect_to todos_url, notice: "ユーザー「#{@user.name}」を編集しました。"
   end
 
   def destroy
     @user.destroy
-    redirect_to todos_url, notice: "Todo「#{@user.name}」を削除しました。"
+    redirect_to todos_url, notice: "ユーザー「#{@user.name}」を削除しました。"
   end
 
 

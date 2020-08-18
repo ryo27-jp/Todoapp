@@ -10,7 +10,7 @@ class ViewersController < ApplicationController
     @viewer = editor_user.viewers.new(viewer_params)
 
     if @viewer.save
-      redirect_to viewer_url(@viewer), notice: "ユーザー「#{@viewer.name}」を登録しました"
+      redirect_to user_url(@viewer), notice: "ユーザー「#{@viewer.name}」を登録しました"
     else
       render :new
     end

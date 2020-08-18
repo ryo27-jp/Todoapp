@@ -13,4 +13,4 @@ table.table.table-hover
       td= @user.email
 
 = link_to '編集', edit_user_path(@user), class:'btn btn-primary mr-3'
-= link_to '削除', @user, method: :delete, date: { confirm: "ユーザー「#{@user.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to '削除', @user, method: :delete, data: { confirm: "ユーザー「#{@user.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

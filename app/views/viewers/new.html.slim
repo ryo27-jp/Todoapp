@@ -1,9 +1,9 @@
 h1 Viewers#new
 
-/ - if user.errors.present?
-/    ul#error_explanation
-/     - user.errors.full_messages.each do |message|
-/        li = message
+- if @viewer.errors.present?
+   ul#error_explanation
+    - @viewer.errors.full_messages.each do |message|
+       li = message
 
 = form_with model: @viewer, scope: :viewer, url: viewers_path, local: true do |f|
   .form-group
