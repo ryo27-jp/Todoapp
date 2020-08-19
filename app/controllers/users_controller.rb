@@ -15,7 +15,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to user_url(@user), notice: "ユーザー「#{@user.name}」を登録しました"
+      log_in @user
+      redirect_to root_url, notice: "ユーザー「#{@user.name}」を登録しました"
     else
       render :new
     end
@@ -45,5 +46,9 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def log_in(user)
+      session[:user_id] = user.id
     end
 end
