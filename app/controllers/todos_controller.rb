@@ -4,11 +4,11 @@ class TodosController < ApplicationController
 
   def index
     if viewer_user
-      @q = viewer_user.editor.todos.ransack(params[:q])
-      @todos = @q.result(distinct: true)
+      @q = viewer_user.editor.todos.order(created_at: :desc).ransack(params[:q])
+      @todos = @q.result(distinct: true).page(params[:page]).per(15)
     else
-      @q = current_user.todos.ransack(params[:q])
-      @todos = @q.result(distinct: true)
+      @q = current_user.todos.order(created_at: :desc).ransack(params[:q])
+      @todos = @q.result(distinct: true).page(params[:page]).per(15)
     end
   end
 
