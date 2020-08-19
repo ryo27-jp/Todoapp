@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   skip_before_action :editor_required, only: [:index, :show]
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo, only: [:edit, :update, :destroy]
 
   def index
     if viewer_user
@@ -13,6 +13,11 @@ class TodosController < ApplicationController
   end
 
   def show
+    if viewer_user
+      @todo = viewer_user.editor.todos.find(params[:id])
+    else
+      @todo = current_user.todos.find(params[:id])
+    end
   end
 
   def new

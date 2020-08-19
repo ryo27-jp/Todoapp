@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+速修実践ガイドを読了したのでそのアウトプットの為に作成しました。
 
-Things you may want to cover:
+・機能
+編集者アカウントを作成し、Todoを作成する。
+管理者（編集者）が閲覧者アカウントを作成できる。
+閲覧者は編集者が登録したTodoを閲覧することができる。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+heroku
+https://morning-sierra-80148.herokuapp.com/

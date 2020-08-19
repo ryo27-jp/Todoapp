@@ -20,6 +20,6 @@ table.table.table-hover
     tr
       th= Todo.human_attribute_name(:updated_at)
       td= @todo.updated_at
-
-= link_to '編集', edit_todo_path(@todo), class:'btn btn-primary mr-3'
-= link_to '削除', @todo, method: :delete, data: { confirm: "Todo「#{@todo.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+- if editor_user
+  = link_to '編集', edit_todo_path(@todo), class:'btn btn-primary mr-3'
+  = link_to '削除', @todo, method: :delete, data: { confirm: "Todo「#{@todo.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
