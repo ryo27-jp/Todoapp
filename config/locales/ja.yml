@@ -17,6 +17,15 @@ ja:
         description: 説明
         created_at: 登録日時
         updated_at: 更新日時
+        category_id: カテゴリー
+      category:
+        id: ID
+        name: 名称
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        
 
   date:
     abbr_day_names:
