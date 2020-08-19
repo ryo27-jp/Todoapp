@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   skip_before_action :editor_required, only: [:index, :show]
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
   
 
   def index
@@ -12,6 +12,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    if viewer_user
+      @category = viewer_user.editor.categories.find(params[:id])
+    else
+      @category = current_user.categories.find(params[:id])
+    end
   end
 
   def new

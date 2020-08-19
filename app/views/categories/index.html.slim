@@ -14,5 +14,5 @@ table.table.tablejover
                 td= link_to category.name, category
                 td
                     - if editor_user
-                    = link_to '編集', edit_category_path(category), class:'btn btn-primary mr-3'
-                    = link_to '削除', category, method: :delete, data: { confirm: "カテゴリ「#{category.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+                     = link_to '編集', edit_category_path(category), class:'btn btn-primary mr-3'
+                     = link_to '削除', category, method: :delete, data: { confirm: "カテゴリ「#{category.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
