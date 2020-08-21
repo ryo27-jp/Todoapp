@@ -1,23 +1,23 @@
 # README
 
-速修実践ガイドを読了したのでそのアウトプットの為に作成しました。
+速修実践ガイドを読了したのでそのアウトプットの為に作成しました。<br>
 
-・機能
-編集者アカウントを作成し、Todoを作成する。
-管理者（編集者）が閲覧者アカウントを作成できる。
-閲覧者は編集者が登録したTodoを閲覧することができる。
+・機能<br>
+編集者アカウントを作成し、Todoを作成する。<br>
+管理者（編集者）が閲覧者アカウントを作成できる。<br>
+閲覧者は編集者が登録したTodoを閲覧することができる。<br>
+<br>
+・heroku<br>
+https://morning-sierra-80148.herokuapp.com/<br>
 
-・heroku
-https://morning-sierra-80148.herokuapp.com/
+・テストアカウント<br>
+編集者<br>
+メールアドレス：admin@example.com<br>
+パスワード:password<br>
 
-・テストアカウント
-編集者
-メールアドレス：admin@example.com
-パスワード:password
-
-閲覧者
-メールアドレス：a.kodomo@example.com
-パスワード:password
+閲覧者<br>
+メールアドレス：a.kodomo@example.com<br>
+パスワード:password<br>
 
 
 
