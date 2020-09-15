@@ -27,8 +27,7 @@ table.table.tablejover
             tr
                 td= link_to todo.name, todo
                 td= todo.created_at
-                / 理解が曖昧
-                td= todo.category.try(:name)
+                td= todo.category&.name
                 td
                     - if editor_user
                      = link_to '編集', edit_todo_path(todo), class:'btn btn-primary mr-3'
