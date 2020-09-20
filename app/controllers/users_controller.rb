@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to root_url, notice: "ユーザー「#{@user.name}」を登録しました"
     else
+      binding.pry
       render :new
     end
   end
