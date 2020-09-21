@@ -15,9 +15,13 @@ RSpec.describe User, type: :model do
     expect(user).not_to be_valid
   end
   it "重複したemailアドレスは無効" do
-    user = FactoryBot.create(:user)
-    user2 = FactoryBot.build(:user)
+    user = FactoryBot.create(:user,email: "test@example.com")
+    user2 = FactoryBot.build(:user,email: "test@example.com")
     expect(user).to be_valid
     expect(user2).not_to be_valid
+  end
+  it "nameが51文字の時は無効" do
+    user = FactoryBot.build(:user,name: "a" * 51)
+    expect(user).not_to be_valid
   end
 end
