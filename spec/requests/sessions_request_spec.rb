@@ -6,5 +6,10 @@ RSpec.describe "Sessions", type: :request do
       get '/login'
       expect(response).to have_http_status(200)
     end
+
+    it "ログインしていなければ/loginへリダイレクトする" do
+      get '/users'
+      expect(response).to redirect_to '/login'
+    end
   end
 end
