@@ -15,4 +15,16 @@ RSpec.feature "Sessions", type: :feature do
     # ログインに成功したことを検証する
     expect(page).to have_content 'ログインしました。'
   end
+
+  scenario '投稿する' do
+    visit login_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+
+    click_on 'ログインする'
+    click_link '新規登録'
+    fill_in "名称", with: 'test'
+    click_button "登録する"
+    expect(page).to have_content 'Todo「test」を登録しました。'
+  end
 end
