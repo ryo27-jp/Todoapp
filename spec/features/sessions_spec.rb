@@ -27,4 +27,14 @@ RSpec.feature "Sessions", type: :feature do
     click_button "登録する"
     expect(page).to have_content 'Todo「test」を登録しました。'
   end
+
+  scenario 'カテゴリ一覧' do
+    visit login_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+
+    click_on 'ログインする'
+    click_link 'カテゴリ一覧'
+    expect(page).to have_content 'カテゴリ一覧'
+  end
 end
