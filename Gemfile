@@ -32,6 +32,7 @@ end
 group :test do
   gem 'webdrivers', '~> 3.0'
   gem 'capybara', '>= 2.15'
+  gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
 end
 
