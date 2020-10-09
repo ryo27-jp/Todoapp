@@ -1,27 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature "Sessions", type: :feature do
-  before do
-    @user = FactoryBot.create(:user)
-  end
+  let(:user){FactoryBot.create(:user)}
   scenario 'ログインする' do
-    # トップページを開く
-    visit login_path
-    # ログインフォームにEmailとパスワードを入力する
-    fill_in 'Email', with: 'test1@example.com'
-    fill_in 'Password', with: 'password'
-    # ログインボタンをクリックする
-    click_on 'ログインする'
-    # ログインに成功したことを検証する
+    sign_in_as user
     expect(page).to have_content 'ログインしました。'
   end
 
   scenario '投稿する' do
-    visit login_path
-    fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
-
-    click_on 'ログインする'
+    sign_in_as user
     click_link '新規登録'
     fill_in "名称", with: 'test'
     click_button "登録する"
@@ -29,12 +16,10 @@ RSpec.feature "Sessions", type: :feature do
   end
 
   scenario 'カテゴリ一覧' do
-    visit login_path
-    fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
-
-    click_on 'ログインする'
+    sign_in_as user
     click_link 'カテゴリ一覧'
     expect(page).to have_content 'カテゴリ一覧'
   end
 end
+
+    
